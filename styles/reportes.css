@@ -1,0 +1,14 @@
+.container{
+    align-items: center;
+    justify-content: center;
+    margin-top: 5rem;
+    margin-right: 30rem;
+    margin-left: 28rem;
+    width: 200;
+}
+.text{
+    display: flex;
+    justify-content: center;
+    margin-top: 3rem;
+    text-align: center;
+}
