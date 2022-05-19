@@ -1,47 +1,69 @@
+
 import { useForm } from "react-hook-form";
-import Swal from 'sweetalert2/dist/sweetalert2.js'
 import Head from 'next/head'
 import Image from 'next/image'
-import { Form, Input, Button, Checkbox } from 'antd';
 import axios from 'axios';
+import 'antd/dist/antd.css'
+import Swal from "sweetalert2";
+import { Form, Input, Button, Checkbox } from 'antd';
+
 
 export default function index() {
-  const {
-    handleSubmit,  
-    formState: { errors },
-  } = useForm();
 
-  function onSubmit(data) {
-    console.log("estos son los datos",data);
+  let nombre;
+  let apellido;
+
+  
+  const onSubmit = event => {
+    event.preventDefault() // don't redirect the page
+    // where we'll add our form logic
+    let nombre = document.getElementById('nombre').value;
+    let apellidos = document.getElementById('apellido').value;
+    let usuario = document.getElementById('email').value;
+    let password = document.getElementById('password').value;
+    
     axios.post('http://localhost:3005/api/usuarios', {
-        nombre: data.firstName,
-        apellidos: data.lastName,
-        usuario: data.Email,
-        password: data.Password,
-    })
-    .then(response => {
-        console.log(response);
-    });
-    Swal.fire({
-      position: "center",
-      icon: "success",
-      title: "Su registro se ha guardado con exito",
-      showConfirmButton: false,
-      timer: 1500,
-    });
-  } // Su funcion de envio de formulario que invoca despues de una validacion exitosa
+      nombre,
+      apellidos,
+      usuario,
+      password,
+  })
+  .then(response => {
+      const {ok} = response.data;
 
-  //console.log(watch("example"));
+      console.log(ok);
+      if(ok){
+        Swal.fire({
+          position: "center",
+          icon: "success",
+          title: "Su registro se ha guardado con exito",
+          showConfirmButton: false,
+          timer: 1500,
+        });
+      }else{
+        Swal.fire({
+          position: "center",
+          icon: "warning",
+          title: "Su registro no se ha guardado con exito",
+          showConfirmButton: false,
+          timer: 1500,
+        });
+      }
+  });
+  
+
+  }
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)}>
+
     <div>
-      <h1 className='centra'>
+      <h1 className='centrar'>
         Registrar usuario
       </h1>
       <div className='centered'>
 
     <Form
+    onSubmit={onSubmit}
       name="basic"
       labelCol={{ span: 8 }}
       wrapperCol={{ span: 16 }}
@@ -52,11 +74,15 @@ export default function index() {
         
           <div className='inpu1'>
               <Form.Item
+                 
             label="Nombre(s)"
             name="nombre"
             rules={[{ required: true, message: 'Porfavor Ingresa tu usuario' }]}
           >
-            <Input />
+            <Input
+                id = "nombre"
+                 />
+            
 
             
             
@@ -70,7 +96,11 @@ export default function index() {
           name="apellidos"
           rules={[{ required: true, message: 'Porfavor Ingresa tu apellido' }]}
         >
-          <Input />
+          <Input 
+            id = "apellido"
+          
+          />
+
           </Form.Item>
           </div>
           <div className='inpu1'>
@@ -80,7 +110,8 @@ export default function index() {
           name="email"
           rules={[{ required: true, message: 'Porfavor Ingresa tu email' }]}
         >
-          <Input />
+          <Input
+          id="email"/>
         </Form.Item>
 
           </div>
@@ -91,7 +122,8 @@ export default function index() {
         name="password"
         rules={[{ required: true, message: 'Porfavor ingresa tu password' }]}
       >
-        <Input.Password />
+        <Input.Password
+        id="password" />
       </Form.Item>
           </div>
           
@@ -99,20 +131,15 @@ export default function index() {
 
       <Form.Item name="remember" valuePropName="checked" wrapperCol={{ offset: 8, span: 16 }}>
         <Checkbox>Remember me</Checkbox>
-        
       </Form.Item>
 
       <Form.Item wrapperCol={{ offset: 8, span: 16 }}>
-        <span className='button'></span>
-        <Button type="primary" htmlType="submit">
-          Submit
-          
+        <Button type="submit" onClick={onSubmit} htmlType="submit">
+          Guardar
         </Button>
-        
       </Form.Item>
       </Form>
       </div>
     </div>
-    </form>
   );
 }

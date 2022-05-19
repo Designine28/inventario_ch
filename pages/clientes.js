@@ -89,7 +89,7 @@ const state = { visible: false };
           onValuesChange={onFormLayoutChange}
         >
           <div className='center'>
-          <h1>Trabajadores</h1>
+          <h1>Clientes</h1>
           <Form.Item label="Nombre">
 
             <Search
@@ -103,12 +103,12 @@ const state = { visible: false };
           </div>
                   <div className='drawer'>
                   <Button type="primary" shape="round" className="" onClick={showDrawer} icon={<UserAddOutlined />}>
-                      Agregar nuevo trabajador
+                      Agregar nuevo cliente
                   </Button>
                   </div>
                   <Drawer
-                      title="Agregar un nuevo trabajador"
-                      width={720}
+                      title="Agregar un nuevo cliente"
+                      width={420}
                       onClose={onClose}
                       visible={visible}
                       bodyStyle={{ paddingBottom: 80 }}
@@ -123,78 +123,48 @@ const state = { visible: false };
                   >
                       <Form layout="vertical" hideRequiredMark>
                       <Row gutter={16}>
-                          <Col span={12}>
+                          <Col span={20}>
                           <Form.Item
                               name="name"
-                              label="Id"
+                              label="Nombre"
                               rules={[{ required: true,
                                 minLength: 5,
                                 required: '^\\([0-9]{2}\\)((3[0-9]{3}-[0-9]{4})|(9[0-9]{3}-[0-9]{5}))$'}]}
                           >
-                              <Input placeholder="Ingrese su id" />
-                          </Form.Item>
-                          </Col>
-                          <Col span={12}>
-                          <Form.Item
-                              name="nombre"
-                              label="Nombre"
-                              rules={[{ required: true, message: 'Please enter url' }]}
-                          >
+                             
                               <Input placeholder="Ingrese el nombre" />
                           </Form.Item>
                           </Col>
                       </Row>
                       <Row gutter={16}>
-                          <Col span={12}>
+                          <Col span={20}>
                           <Form.Item
-                              name="puesto"
-                              label="Puesto"
+                              name="Folio"
+                              label="Folio"
                               rules={[{ required: true, message: 'Please select an owner' }]}
                           >
-                              <Select placeholder="Seleccione un tipo de puesto">
-                              <Option value="1">Encargado de almacen</Option>
-                              <Option value="2">Vendedor</Option>
-                              </Select>
-                          </Form.Item>
-                          </Col>
-                          <Col span={12}>
-                          <Form.Item
-                              name="local"
-                              label="Local"
-                              rules={[{ required: true, message: 'Please choose the type' }]}
-                          >
-                              <Select placeholder="Seleccione el local">
-                                <Option value="1">Local 1</Option>
-                                <Option value="2">Local 2</Option>
-                                <Option value="3">Local 3</Option>
-                                <Option value="4">Local 4</Option>
-                                <Option value="5">Local 5</Option>
-                                <Option value="6">Local 6</Option>
-                                <Option value="7">Local 7</Option>
-                              </Select>
+                              
+                            
+                              <Input placeholder="Ingrese folio" />
+                         
+                        
+                              
                           </Form.Item>
                           </Col>
                       </Row>
                       <Row gutter={16}>
-                          <Col span={12}>
+                          <Col span={20}>
                           <Form.Item
-                            name="usuario"
-                            label="Usuario"
+                            name="Descuento"
+                            label="Descuentos"
                             rules={[{ required: true, message: 'Please choose the approver' }]}
                           >
-                            <Select placeholder="Elige un tipo de usuario">
-                              <Option value="jack">Administrador</Option>
-                              <Option value="tom">Invitado</Option>
-                            </Select>
-                          </Form.Item>
-                          </Col>
-                          <Col span={12}>
-                          <Form.Item
-                            name="contraseña"
-                            label="Contraseña"
-                            rules={[{ required: true, message: 'Porfavor ingresa tu password' }]}
-                          >
-                            <Input.Password />
+                           
+                              
+                           <Input placeholder="Ingrese el descuento" />
+                           
+                          
+                           
                           </Form.Item>
                           </Col>
                       </Row>

@@ -1,3 +1,19 @@
 .tamaño{
     margin-top: 2rem;
 }
+
+.center{
+align-items: center;text-align: center;
+margin-top: 2rem;
+}
+
+.drawer{
+    position: relative;
+    left: 75rem;
+    margin-bottom: 3rem;
+}
+
+.table{
+    margin-left: 2rem;
+    margin-right: 2rem;
+}

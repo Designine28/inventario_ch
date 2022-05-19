@@ -1,11 +1,12 @@
-.navcontainer{
-  position: fixed;
-  width:250px;
-  height:100%;
-  background-color: #fff;
-  box-shadow: 3px 0px 6px 0px rgba(246, 246, 246, 0.75);
-
+.logo {
+  height: 32px;
+  margin: 16px;
+  background: rgba(255, 255, 255, 0.3);
 }
+
+  [data-theme="dark"] {
+    background: #141414;
+  }
 .wrapper{
   padding:10px;
   z-index: 1;
@@ -28,6 +29,9 @@
 .margen {
   margin-left: 50rem;
 }
-.site-layout-background {
+.site-layout .site-layout-background {
   background: #fff;
+}
+.text{
+  color: white;
 }

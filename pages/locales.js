@@ -1,9 +1,21 @@
 import Layouts from '../layout/Layout';
 import React, { useState } from 'react';
-import { Form, Input, Table, Tag, Space  } from 'antd';
+import {  Table,Drawer, Form, Button, Col, Row, Input, Select, DatePicker, Space} from 'antd';
+import {  UserAddOutlined } from '@ant-design/icons';
+
 import Link from 'next/link';
 
 const FormLayoutDemo = () => {
+const [visible, setVisible] = React.useState(false);
+const showDrawer = () => {
+  setVisible(true);
+};
+const onClose = () => {
+  setVisible(false);
+};
+
+const state = { visible: false }; 
+  const { Option } = Select;
   const [form] = Form.useForm();
   const [formLayout, setFormLayout] = useState('horizontal');
   const onSearch = value => console.log(value);
@@ -65,38 +77,41 @@ const FormLayoutDemo = () => {
           ),
         },
       ];
-      return (
-        <Layouts>
-          <Form
-      {...formItemLayout}
-      layout={formLayout}
-      form={form}
-      initialValues={{
-        layout: formLayout,
-      }}
-      onValuesChange={onFormLayoutChange}
-    >
-      <div className='texto'>
-      <h1>Reportes</h1>
-      <Form.Item label="Fecha:">
-        <Search
-        placeholder="input search text"
-        allowClear
-        enterButton="Search"
-        size="large"
-        onSearch={onSearch}
-        />
-      </Form.Item>
-      </div>
-      <div className='table'>
-      <Table columns={columns} />
-      </div>
-      <Form.Item {...buttonItemLayout}>
-        
-        
-      </Form.Item>
+    return (
+      <Layouts>
+        <Form
+          {...formItemLayout}
+          layout={formLayout}
+          form={form}
+          initialValues={{
+            layout: formLayout,
+          }}
+          onValuesChange={onFormLayoutChange}
+        >
+          <div className='center'>
+          <h1>Locales</h1>
+          <Form.Item label="Nombre">
+
+            <Search
+            placeholder="input search text"
+            allowClear
+            enterButton="Search"
+            size="large"
+            onSearch={onSearch}
+            />
+          </Form.Item>
+          </div>
+             
+          <div className='table'>
+          <Table columns={columns} />
+          </div>
+          <Form.Item {...buttonItemLayout}>
+            
+            
+          </Form.Item>
     </Form>
-        </Layouts>
-      );
-}
+      </Layouts>
+    );
+};
+
 export default FormLayoutDemo ;

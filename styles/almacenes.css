@@ -1,0 +1,22 @@
+.centra {
+  display: flex;
+  justify-content: center;
+  margin-top: 3rem;
+  text-align: center;
+  
+ 
+}
+  /**centrar forumlario */
+  .centered {
+    align-items: center;
+    justify-content: center;
+    margin-top: 10px;
+    margin-right: 30rem;
+    margin-left: 28rem;
+    width: 200;
+  }
+  /**centrar los inputs */
+.input1{
+
+margin-top: 2rem;
+}
